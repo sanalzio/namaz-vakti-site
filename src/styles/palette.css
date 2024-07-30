@@ -1,0 +1,17 @@
+/* Light theme palette */
+:root{
+    --light-text: #4c4f69;
+    --light-accent: #8839ef;
+    --light-subtext0: #6c6f85;
+    --light-overlay2: #7c7f93;
+    --light-base: #eff1f5;
+}
+
+/* Dark theme palette */
+:root{
+    --dark-text: #cdd6f4;
+    --dark-accent: #cba6f7;
+    --dark-subtext0: #a6adc8;
+    --dark-overlay2: #9399b2;
+    --dark-base: #1e1e2e;
+}

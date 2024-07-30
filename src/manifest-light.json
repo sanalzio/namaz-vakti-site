@@ -1,0 +1,54 @@
+{
+    "name": "Namaz Vakti",
+    "short_name": "namaz",
+    "description": "Diyanet namaz vakitleri için şık ve modern görünümlü alternatif frontend uygulaması.",
+    "icons": [
+        {
+            "src": "assets/icons/png/36x36-light.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/png/48x48-light.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/png/72x72-light.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/png/96x96-light.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/png/144x144-light.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/png/192x192-light.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "splash_screens": [
+      {
+        "src": "assets/splash/png/640x1136-light.png",
+        "sizes": "640x1136",
+        "type": "image/png"
+      },
+      {
+        "src": "assets/splash/png/750x1334-light.png",
+        "sizes": "750x1334",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#eff1f5",
+    "background_color": "#eff1f5",
+    "start_url": "/src/index.html",
+    "display": "standalone",
+    "orientation": "portrait"
+}

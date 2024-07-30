@@ -1,0 +1,12 @@
+{
+  "name": "namaz-vakti-site",
+  "version": "1.0.0",
+  "author": "sanalzio",
+  "main": "./src",
+  "description": "Diyanet namaz vakitleri için alternatif frontend sitesi.",
+  "keywords": [],
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

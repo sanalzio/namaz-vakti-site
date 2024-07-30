@@ -1,0 +1,52 @@
+12c12
+<    sodipodi:docname="640x1136.svg"
+---
+>    sodipodi:docname="640x1136-light.svg"
+1059c1059
+<      style="fill:#1e1e2e;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.333333;paint-order:stroke fill markers"
+---
+>      style="fill:#eff1f5;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.333333;paint-order:stroke fill markers"
+1070c1070
+<        style="display:inline;fill:#000000;fill-opacity:0.4;stroke-width:10.9866"
+---
+>        style="display:inline;fill:#000000;fill-opacity:0.19;stroke-width:10.9866"
+1077c1077
+<        style="display:inline;fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1" /><path
+1081c1081
+<        style="display:inline;fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1" /><path
+1085c1085
+<        style="display:inline;fill:#cba6f7;fill-opacity:1"
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1"
+1091c1091
+<        style="display:inline;fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1" /><path
+1095c1095
+<        style="display:inline;fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1" /><path
+1099c1099
+<        style="display:inline;fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1" /><path
+1103c1103
+<        style="display:inline;fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="display:inline;fill:#8839ef;fill-opacity:1" /><path
+1107c1107
+<        style="fill:#cba6f7;fill-opacity:1" /><path
+---
+>        style="fill:#8839ef;fill-opacity:1" /><path
+1111c1111
+<        style="fill:#cba6f7;fill-opacity:1" /><rect
+---
+>        style="fill:#8839ef;fill-opacity:1" /><rect
+1119c1119
+<        style="fill:#cba6f7;fill-opacity:1" /></g></svg>
+---
+>        style="fill:#8839ef;fill-opacity:1" /></g></svg>

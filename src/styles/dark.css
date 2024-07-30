@@ -1,0 +1,72 @@
+:root {
+    accent-color: var(--dark-accent);
+    color-scheme: dark;
+}
+
+html, body {
+    background-color: var(--dark-base);
+    color: var(--dark-text);
+}
+
+strong,
+a {
+    color: var(--dark-accent);
+}
+
+::selection{
+    background-color: rgba(255,255,255,0.2);
+}
+
+#topbar svg{
+    fill: var(--dark-text);
+}
+
+#settings{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: var(--dark-text);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+}
+
+#settings > div > *:not(label), #settings > *:not(div, #setHead){
+    border-color: var(--dark-accent);
+    background-color: var(--dark-base);
+    caret-color: var(--dark-accent);
+}
+
+#settings > div > *:not(label) option, #settings > *:not(div, #setHead) option{
+    color: var(--dark-accent);
+}
+
+#aboutContent{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: var(--dark-text);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-base);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark-accent);
+}
+
+.subtext{
+    color: var(--dark-subtext0);
+}
+
+#vakitler{
+    border-color: var(--dark-overlay2);
+}
+
+#main>div, #main{
+    border-color: var(--dark-overlay2);
+}
+
+#line{
+    background-color: var(--dark-overlay2);
+}
