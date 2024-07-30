@@ -48,7 +48,7 @@
     ],
     "theme_color": "#eff1f5",
     "background_color": "#eff1f5",
-    "start_url": "/src/index.html",
+    "start_url": "/namaz-vakti-site/src/index.html",
     "display": "standalone",
     "orientation": "portrait"
 }
