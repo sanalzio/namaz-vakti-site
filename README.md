@@ -23,3 +23,7 @@ Eğer chromium tabanlı bir tarayıcı kullanıyorsanız adres çubuğunun en sa
 Eğer safari kullanıyorsanız araç çubuğundaki paylaş düğmesine tıklayıp açılan menüde "Ana ekrana ekle" seçeneğini seçmeniz gerekir.
 
 Eğer chrome tabanlı bir tarayıcı kullanıyorsanız araç çubuğundaki paylaş düğmesine tıklayıp açılan menüde "Tam ekrana ekle" seçeneğini yada üç nokta (...) gibi bir düğmeye tıklayıp "Tam ekrana ekle" seçeneğini seçmeniz gerekir.
+
+# ℹ Bilgilendirme
+
+Kod biraz kötü temiz hale getircem sıkıntı etmeyin.
