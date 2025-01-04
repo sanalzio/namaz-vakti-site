@@ -1,3 +1,6 @@
+# 1.2.1
+- Dinamik manifest sistemindeki simge sorunu düzeltildi.
+
 # 1.2.0
 - Dinamik manifest sistemi ile PWA sistemi `search params` sistemine uyumlu hale getirildi.
 

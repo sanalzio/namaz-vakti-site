@@ -1,6 +1,6 @@
 {
   "name": "namaz-vakti-site",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "sanalzio",
   "main": "./src",
   "description": "Diyanet namaz vakitleri için alternatif frontend sitesi.",
