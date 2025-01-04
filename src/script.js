@@ -3,7 +3,7 @@
 
 const vakitlerArray = ["İmsak", "Güneş", "Öğle", "İkindi", "Akşam", "Yatsı"];
 let clockInterval;
-const Cookies = CookieManager;
+const params = new URL(location.href).searchParams;
 
 
 //*================== Variables ==================*//
@@ -91,31 +91,29 @@ function sistemSaati() {
     });
 }
 
-function cookieOperations(params) {
-    if (Cookies.get("il")) {
-        html.city.value = Cookies.get("il");
+function applySettings() {
+    if (params.get("il")) {
+        html.city.value = Number(params.get("il"));
     } else {
         html.city.value = 1;
-        Cookies.set("il", "1");
     }
 
-    if (Cookies.get("theme")) {
-        html.themeSelect.value = Cookies.get("theme");
+    if (params.get("theme")) {
+        html.themeSelect.value = params.get("theme");
         html.themeLink.href = `./styles/${html.themeSelect.value}.css`;
     }
 
-    if (Cookies.get("zoom")) {
-        html.zoom.value = Cookies.get("zoom");
+    if (params.get("zoom")) {
+        html.zoom.value = Number(params.get("zoom"));
         document.querySelector("html").style.zoom = html.zoom.value;
         html.zoomVal.innerHTML = html.zoom.value;
     } else {
         html.zoom.value = 1;
         document.querySelector("html").style.zoom = html.zoom.value;
-        Cookies.set("zoom", "1");
     }
 
-    if (Cookies.get("lowAnims")) {
-        if (Cookies.get("lowAnims")=="false") {
+    if (params.get("lowAnims")) {
+        if (params.get("lowAnims") == "false") {
             html.lowAnims.checked = false;
             html.anims.href = "./styles/animations.css";
         } else {
@@ -125,7 +123,6 @@ function cookieOperations(params) {
     } else {
         html.lowAnims.checked = false;
         html.anims.href = "./styles/animations.css";
-        Cookies.set("lowAnims", "true");
     }
 }
 
@@ -182,6 +179,17 @@ async function loadAboutContent() {
 }
 
 
+function writeSettingsToURL() {
+    let search = "?";
+    search += `il=${html.city.value}&`;
+    search += `theme=${html.themeSelect.value}&`;
+    search += `zoom=${html.zoom.value}&`;
+    search += `lowAnims=${html.lowAnims.checked.toString()}`;
+    history.pushState({}, "", search);
+    location.search = search;
+}
+
+
 //*============= Functions & Classes =============*//
 
 
@@ -191,7 +199,7 @@ async function loadAboutContent() {
 
 async function main() {
     await loadAboutContent();
-    cookieOperations();
+    applySettings();
     await editContent();
 
     html.body.style.display = "flex";
@@ -207,33 +215,51 @@ async function main() {
 
 document.addEventListener("DOMContentLoaded", main);
 
-html.city.addEventListener("change", ()=>{
-    Cookies.set("il", html.city.value);
+/* html.city.addEventListener("change", ()=>{
     editContent();
 });
 
 html.themeSelect.addEventListener("change", ()=>{
-    Cookies.set("theme", html.themeSelect.value);
     html.themeLink.href = `./styles/${html.themeSelect.value}.css`;
-});
+}); */
 
 html.zoom.addEventListener("change", ()=>{
     document.querySelector("html").style.zoom = html.zoom.value;
-    Cookies.set("zoom", html.zoom.value);
 });
 
 html.zoom.addEventListener("input", ()=>{
     html.zoomVal.innerHTML = html.zoom.value;
 });
 
-html.lowAnims.addEventListener("change", ()=>{
-    Cookies.set("lowAnims", html.lowAnims.checked.toString());
+/* html.lowAnims.addEventListener("change", ()=>{
     if (html.lowAnims.checked) {
         html.anims.href = "";
     } else {
         html.anims.href = "./styles/animations.css";
     }
+}); */
+
+
+/* Settings apply */
+
+html.applyBtn.addEventListener("click", ()=>{
+    writeSettingsToURL();
 });
+
+/* Settings apply */
+
+
+/* Settings and About Div */
+
+html.settingsBtn.addEventListener("click", ()=>{
+    html.settings.style.display = html.settings.style.display == "block" ? "none" : "block";
+});
+
+html.aboutBtn.addEventListener("click", ()=>{
+    html.aboutContent.style.display = html.aboutContent.style.display == "block" ? "none" : "block";
+});
+
+/* Settings and About Containers */
 
 
 //*=============== Event Listeners ===============*//

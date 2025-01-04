@@ -26,9 +26,6 @@ html, body {
 #settings {
     width: 300px;
     margin-left: 1rem;
-    &:has(#settingsToggle:checked) {
-        display: block;
-    }
 }
 
 #settingsToggle {
@@ -49,10 +46,20 @@ html, body {
     outline: none;
     border-style: solid;
     padding: 0.2rem;
+    cursor: pointer !important;
 }
 
 #settings>*, #settings>*>*{
     background-color: transparent;
+}
+
+#applyBtn{
+    float: right;
+    margin: 0 !important;
+}
+#applyBtn:hover{
+    cursor: pointer !important;
+    filter: brightness(1.1);
 }
 
 ::-webkit-scrollbar {
@@ -100,9 +107,6 @@ h2,h3{
     display: none;
     right: 1rem;
     width: 70%;
-    &:has(#aboutToggle:checked) {
-        display: block;
-    }
 }
 
 #aboutToggle {
