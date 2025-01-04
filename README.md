@@ -5,7 +5,7 @@ Diyanet namaz vakitleri için alternatif frontend sitesi.
 #### [-> 🌐 Siteyi ziyaret etmek yada uygulamayı indirmek için buraya tıklayın <-](https://sanalzio.github.io/namaz-vakti-site/src/index.html)
 
 > [!IMPORTANT]
-> **Şu anlık telefonda çalışmıyor düzeltmeye çalışacağım.**
+> **Uygulama artık telefonlarda çalışıyor!**
 
 - [🕌 namaz-vakti](#-namaz-vakti)
       - [-\> 🌐 Siteyi ziyaret etmek yada uygulamayı indirmek için buraya tıklayın \<-](#---siteyi-ziyaret-etmek-yada-uygulamayı-indirmek-için-buraya-tıklayın--)
