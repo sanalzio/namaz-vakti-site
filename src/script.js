@@ -3,7 +3,6 @@
 
 const vakitlerArray = ["İmsak", "Güneş", "Öğle", "İkindi", "Akşam", "Yatsı"];
 let clockInterval;
-const params = new URL(location.href).searchParams;
 
 
 //*================== Variables ==================*//
