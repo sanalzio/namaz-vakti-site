@@ -47,6 +47,7 @@ html, body {
     border-style: solid;
     padding: 0.2rem;
     cursor: pointer !important;
+    border-radius: 0.25rem;
 }
 
 #settings>*, #settings>*>*{
@@ -115,6 +116,27 @@ h2,h3{
 
 #aboutContent>*, #aboutContent>*>*{
     background-color: transparent;
+}
+
+
+
+#errorMessageContainer{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: large;
+}
+#errorMessage {
+    width: 85%;
+    text-align: center;
+}
+#reloadBtn {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 

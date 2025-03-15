@@ -35,8 +35,16 @@ a {
     caret-color: var(--dark-accent);
 }
 
+#settings > div > *:not(label, *[type="range"]), #settings > *:not(div, #setHead) {
+    box-shadow: 0px 0px 5px 0px var(--dark-accent);
+}
+
 #settings > div > *:not(label) option, #settings > *:not(div, #setHead) option{
     color: var(--dark-accent);
+}
+
+#applyBtn{
+    color: #fff;
 }
 
 #aboutContent{
@@ -53,6 +61,13 @@ a {
 
 ::-webkit-scrollbar-thumb {
     background: var(--dark-accent);
+}
+
+@-moz-document url-prefix() { /* For firefox */
+    :root {
+        scrollbar-color: var(--dark-accent) var(--dark-base);
+        scrollbar-width: thin;
+    }
 }
 
 .subtext{

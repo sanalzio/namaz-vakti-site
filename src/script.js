@@ -4,6 +4,8 @@
 const vakitlerArray = ["İmsak", "Güneş", "Öğle", "İkindi", "Akşam", "Yatsı"];
 let clockInterval;
 
+const buGun = new Date().toISOString().split('T')[0];
+
 
 //*================== Variables ==================*//
 
@@ -125,20 +127,42 @@ function applySettings() {
     }
 }
 
+async function namazVakitleriVerisi(sehir) {
+
+    if (localStorage["namazVakti" + sehir] && (localStorage.namazVaktiBuGun && localStorage.namazVaktiBuGun === buGun)) {
+        return JSON.parse(localStorage["namazVakti" + sehir]);
+    }
+
+    const req = await fetch(`https://vakit.vercel.app/api/timesFromPlace?country=Turkey&region=${sehir}&city=${sehir}&timezoneOffset=180`);
+
+    const status = req.status;
+
+    // eğer istekten dönen kod 200 değil yani istek başarılı değil ise
+    if (status !== 200) {
+        html.errCode.innerHTML = status.toString();
+        html.errorMessageContainer.style.display = "flex";
+        return null
+    }
+
+    const data = await req.json();
+    const vakitler = data.times[Object.keys(data.times)[0]];
+
+    localStorage.setItem("namazVakti" + sehir, JSON.stringify(vakitler));
+    localStorage.setItem("namazVaktiBuGun", buGun);
+
+    return vakitler;
+    // {"place":{"country":"Turkey","countryCode":"TR","city":"Adana","region":"Adana","latitude":37.001902,"longitude":35.328827},"times":{"2024-05-24":["03:38","05:17","12:41","16:31","19:54","21:27"]}}
+}
+
 
 async function editContent() {
     if (clockInterval) clearInterval(clockInterval);
 
 
-    let sehir = capitalizeFirstLetter(getVal(html.city));
+    const sehir = capitalizeFirstLetter(getVal(html.city));
 
 
-    const res = await fetch(`https://vakit.vercel.app/api/timesFromPlace?country=Turkey&region=${sehir}&city=${sehir}&timezoneOffset=180`);
-    const data = await res.json();
-    // const data = {"place":{"country":"Turkey","countryCode":"TR","city":"Adana","region":"Adana","latitude":37.001902,"longitude":35.328827},"times":{"2024-05-24":["03:38","05:17","12:41","16:31","19:54","21:27"]}}
-
-
-    const vakitler = data.times[Object.keys(data.times)[0]];
+    const vakitler = await namazVakitleriVerisi(sehir);
     const [imsak, gunes, ogle, ikindi, aksam, yatsi] = vakitler;
     const sonrakiVakitI = sonrakiVaktiBul(vakitler);
     const sonrakiVakit = vakitlerArray[sonrakiVakitI];
@@ -152,7 +176,7 @@ async function editContent() {
 
     html.cityName.innerHTML = sehir;
 
-    date.innerHTML = Object.keys(data.times)[0];
+    date.innerHTML = buGun;
 
     html.sonrakiVakit.innerHTML = sonrakiVakit;
 
@@ -213,6 +237,8 @@ async function main() {
 
 
 document.addEventListener("DOMContentLoaded", main);
+
+html.reloadBtn.addEventListener("click", () => window.location.reload(false));
 
 /* html.city.addEventListener("change", ()=>{
     editContent();

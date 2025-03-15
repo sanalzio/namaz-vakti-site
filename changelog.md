@@ -1,3 +1,6 @@
+# 1.3.0
+- Gün içerisinde daha önce çektiği veriyi yeniden çekmemek için çekilen veriyi kaydedip, daha önce kaydedilmiş veriyi okuyan sistem getirildi.
+
 # 1.2.1
 - Dinamik manifest sistemindeki simge sorunu düzeltildi.
 
