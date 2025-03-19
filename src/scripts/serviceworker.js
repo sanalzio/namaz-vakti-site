@@ -1,10 +1,10 @@
 const CACHE_NAME = "pwa-cache-v1";
 const URLS_TO_CACHE = [
-    // "/src/namaz-vakti-site/",
-    "/src/namaz-vakti-site/index.html",
-    "/src/namaz-vakti-site/styles/",
-    "/src/namaz-vakti-site/scripts/index.js",
-    // "/src/namaz-vakti-site/manifest.json"
+    // "/namaz-vakti-site/src/",
+    "/namaz-vakti-site/src/index.html",
+    "/namaz-vakti-site/src/styles/",
+    "/namaz-vakti-site/src/scripts/index.js",
+    // "/namaz-vakti-site/src/manifest.json"
 ];
 
 self.addEventListener("install", (event) => {
