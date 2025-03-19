@@ -2,7 +2,14 @@ const CACHE_NAME = "pwa-cache-v1";
 const URLS_TO_CACHE = [
     // "/namaz-vakti-site/src/",
     "/namaz-vakti-site/src/index.html",
-    "/namaz-vakti-site/src/styles/",
+    "/namaz-vakti-site/src/about.html",
+    "/namaz-vakti-site/src/styles/animations.css",
+    "/namaz-vakti-site/src/styles/catppuccin.css",
+    "/namaz-vakti-site/src/styles/dark.css",
+    "/namaz-vakti-site/src/styles/light.css",
+    "/namaz-vakti-site/src/styles/palette.css",
+    "/namaz-vakti-site/src/styles/phone.css",
+    "/namaz-vakti-site/src/styles/style.css",
     "/namaz-vakti-site/src/scripts/index.js",
     // "/namaz-vakti-site/src/manifest.json"
 ];
