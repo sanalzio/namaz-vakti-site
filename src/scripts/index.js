@@ -27,6 +27,14 @@ const html = new htmlHelper();
 
 
 
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./scripts/serviceworker.js')
+            .then(() => console.log("Service Worker regiestered!"))
+            .catch(err => console.log("Throwed arror on registering service worker:", err));
+    }
+}
+
 function kalanZaman(hedefSaati) {
     const simdikiZaman = new Date();
     const hedefZaman = new Date();
@@ -132,8 +140,22 @@ async function namazVakitleriVerisi(sehir) {
     if (localStorage["namazVakti" + sehir] && (localStorage.namazVaktiBuGun && localStorage.namazVaktiBuGun === buGun)) {
         return JSON.parse(localStorage["namazVakti" + sehir]);
     }
+    if (localStorage.namazVaktiBuGun && localStorage.namazVaktiBuGun !== buGun)
+        localStorage.clear();
 
-    const req = await fetch(`https://vakit.vercel.app/api/timesFromPlace?country=Turkey&region=${sehir}&city=${sehir}&timezoneOffset=180`);
+    if (!navigator.onLine) {
+        html.errorMessage.innerHTML = `İnternet bağlantısı bulunamadı. Yeniden denemek için <span id="reloadBtn">yeniden yükleyin</span>.`;
+        html.errorMessageContainer.style.display = "flex";
+        return null;
+    }
+
+    const req = await fetch(`https://vakit.vercel.app/api/timesFromPlace?country=Turkey&region=${sehir}&city=${sehir}&timezoneOffset=180`)
+        .catch(err => {
+            html.errorMessage.innerHTML = `Bir hata ile karşılaşıldı: ${err}. Yeniden denemek için yeniden yükleyin.`;
+            html.errorMessageContainer.style.display = "flex";
+        });
+
+    if (!req) return null;
 
     const status = req.status;
 
@@ -141,7 +163,7 @@ async function namazVakitleriVerisi(sehir) {
     if (status !== 200) {
         html.errCode.innerHTML = status.toString();
         html.errorMessageContainer.style.display = "flex";
-        return null
+        return null;
     }
 
     const data = await req.json();
@@ -163,6 +185,8 @@ async function editContent() {
 
 
     const vakitler = await namazVakitleriVerisi(sehir);
+    if (!vakitler) return false;
+
     const [imsak, gunes, ogle, ikindi, aksam, yatsi] = vakitler;
     const sonrakiVakitI = sonrakiVaktiBul(vakitler);
     const sonrakiVakit = vakitlerArray[sonrakiVakitI];
@@ -191,6 +215,8 @@ async function editContent() {
     },1000);
 
     editDate();
+
+    return true;
 
 }
 
@@ -221,11 +247,14 @@ function writeSettingsToURL() {
 
 
 async function main() {
+
+    registerServiceWorker();
+
     await loadAboutContent();
     applySettings();
-    await editContent();
+    const success = await editContent();
 
-    html.body.style.display = "flex";
+    if (success) html.body.style.display = "flex";
 }
 
 

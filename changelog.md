@@ -1,3 +1,6 @@
+# 1.4.0
+- Çevrimdışı çalışmasını sağlamak için birkaç deneme.
+
 # 1.3.0
 - Gün içerisinde daha önce çektiği veriyi yeniden çekmemek için çekilen veriyi kaydedip, daha önce kaydedilmiş veriyi okuyan sistem getirildi.
 
