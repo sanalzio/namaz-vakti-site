@@ -1,3 +1,6 @@
+# 1.4.2
+- Performans düzenlemeleri.
+
 # 1.4.1
 - Çevrimdışı çalışmasını sağlamak için birkaç deneme daha.
 

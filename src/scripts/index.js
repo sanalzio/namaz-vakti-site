@@ -311,6 +311,7 @@ html.zoom.addEventListener("input", ()=>{
 html.applyBtn.addEventListener("click", ()=>{
     saveSettings();
     applySettings();
+    editContent();
 });
 
 /* Settings apply */
