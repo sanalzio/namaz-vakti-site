@@ -16,10 +16,19 @@ const buGun = new Date().toISOString().split('T')[0];
 
 class htmlHelper {
     constructor() {
+        this._cache = {};
         return new Proxy(this, {
-                get: (target, prop) => {
-                    return document.getElementById(prop) || target[prop];
+            get: (target, prop) => {
+                if (prop in target._cache) {
+                    return target._cache[prop];
                 }
+                const el = document.getElementById(prop);
+                if (el) {
+                    target._cache[prop] = el;
+                    return el;
+                }
+                return target[prop];
+            }
         });
     }
 }
@@ -30,8 +39,8 @@ const html = new htmlHelper();
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./scripts/serviceworker.js')
-            .then(() => console.log("Service Worker regiestered!"))
-            .catch(err => console.log("Throwed arror on registering service worker:", err));
+            .then(reg => console.log("Service Worker regiestered!", reg))
+            .catch(err => console.log("SW register failed", err));
     }
 }
 
@@ -100,20 +109,20 @@ function sistemSaati() {
     });
 }
 
-function applySettings() {
-    if (params.get("il")) {
-        html.city.value = Number(params.get("il"));
+async function applySettings() {
+    if (localStorage.il) {
+        html.city.value = localStorage.il;
     } else {
         html.city.value = 1;
     }
 
-    if (params.get("theme")) {
-        html.themeSelect.value = params.get("theme");
+    if (localStorage.theme) {
+        html.themeSelect.value = localStorage.theme;
         html.themeLink.href = `./styles/${html.themeSelect.value}.css`;
     }
 
-    if (params.get("zoom")) {
-        html.zoom.value = Number(params.get("zoom"));
+    if (localStorage.zoom) {
+        html.zoom.value = Number(localStorage.zoom);
         document.querySelector("html").style.zoom = html.zoom.value;
         html.zoomVal.innerHTML = html.zoom.value;
     } else {
@@ -121,8 +130,8 @@ function applySettings() {
         document.querySelector("html").style.zoom = html.zoom.value;
     }
 
-    if (params.get("lowAnims")) {
-        if (params.get("lowAnims") == "false") {
+    if (localStorage.lowAnims) {
+        if (localStorage.lowAnims == "false") {
             html.lowAnims.checked = false;
             html.anims.href = "./styles/animations.css";
         } else {
@@ -133,6 +142,8 @@ function applySettings() {
         html.lowAnims.checked = false;
         html.anims.href = "./styles/animations.css";
     }
+
+    html.settingsBtn.style.display = "inline";
 }
 
 async function namazVakitleriVerisi(sehir) {
@@ -221,21 +232,21 @@ async function editContent() {
 }
 
 
-async function loadAboutContent() {
-    const res = await fetch("./about.html");
-    const content = await res.text();
-    html.about.outerHTML = content;
+function loadAboutContent() {
+    fetch("./about.html")
+        .then(res => res.text())
+        .then(content => {
+            html.about.outerHTML = content;
+            html.aboutBtn.style.display = "inline";
+        });
 }
 
 
-function writeSettingsToURL() {
-    let search = "?";
-    search += `il=${html.city.value}&`;
-    search += `theme=${html.themeSelect.value}&`;
-    search += `zoom=${html.zoom.value}&`;
-    search += `lowAnims=${html.lowAnims.checked.toString()}`;
-    history.pushState({}, "", search);
-    location.search = search;
+function saveSettings() {
+    localStorage.setItem("il", html.city.value);
+    localStorage.setItem("theme", html.themeSelect.value);
+    localStorage.setItem("zoom", html.zoom.value);
+    localStorage.setItem("lowAnims", html.lowAnims.checked);
 }
 
 
@@ -250,11 +261,12 @@ async function main() {
 
     registerServiceWorker();
 
-    await loadAboutContent();
+    loadAboutContent();
     applySettings();
-    const success = await editContent();
+    editContent();
+    /* const success = await editContent();
 
-    if (success) html.body.style.display = "flex";
+    if (success) html.body.style.display = "flex"; */
 }
 
 
@@ -297,7 +309,8 @@ html.zoom.addEventListener("input", ()=>{
 /* Settings apply */
 
 html.applyBtn.addEventListener("click", ()=>{
-    writeSettingsToURL();
+    saveSettings();
+    applySettings();
 });
 
 /* Settings apply */

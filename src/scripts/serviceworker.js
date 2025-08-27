@@ -1,6 +1,13 @@
-const CACHE_NAME = "pwa-cache-v1";
-const URLS_TO_CACHE = [
-    // "/namaz-vakti-site/src/",
+"use strict";
+
+const CACHE_NAME = "namaz-vakti-site-pwa-cache-v2";
+/* const EXTRA_PATH =
+    location.hostname == "localhost" || location.hostname == "127.0.0.1"
+        ? ""
+        : "/namaz-vakti-site"; */
+const ASSETS = [
+    // "../",
+    "/namaz-vakti-site/src/",
     "/namaz-vakti-site/src/index.html",
     "/namaz-vakti-site/src/about.html",
     "/namaz-vakti-site/src/styles/animations.css",
@@ -10,34 +17,61 @@ const URLS_TO_CACHE = [
     "/namaz-vakti-site/src/styles/palette.css",
     "/namaz-vakti-site/src/styles/phone.css",
     "/namaz-vakti-site/src/styles/style.css",
-    "/namaz-vakti-site/src/scripts/index.js",
-    // "/namaz-vakti-site/src/manifest.json"
+    "/namaz-vakti-site/src/scripts/index.js"/* ,
+    "../",
+    "../index.html",
+    "../about.html",
+    "../styles/animations.css",
+    "../styles/catppuccin.css",
+    "../styles/dark.css",
+    "../styles/light.css",
+    "../styles/palette.css",
+    "../styles/phone.css",
+    "../styles/style.css",
+    "../scripts/index.js" */
 ];
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(URLS_TO_CACHE);
-        })
-    );
-});
-
-self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        })
+        caches
+            .open(CACHE_NAME)
+            .then((cache) => cache.addAll(ASSETS))
+            .then(() => self.skipWaiting())
     );
 });
 
 self.addEventListener("activate", (event) => {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames
-                    .filter((name) => name !== CACHE_NAME)
-                    .map((name) => caches.delete(name))
-            );
-        })
+        caches
+            .keys()
+            .then((keys) =>
+                Promise.all(
+                    keys.map((k) => {
+                        if (k !== CACHE_NAME) return caches.delete(k);
+                    })
+                )
+            )
+            .then(() => self.clients.claim())
+    );
+});
+
+self.addEventListener("fetch", (event) => {
+    const req = event.request;
+    event.respondWith(
+        caches.match(req).then(
+            (cached) =>
+                cached ||
+                fetch(req)
+                    .then((resp) => {
+                        return caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(req, resp.clone());
+                            return resp;
+                        });
+                    })
+                    .catch(() => {
+                        if (req.mode === "navigate")
+                            return caches.match("/index.html");
+                    })
+        )
     );
 });

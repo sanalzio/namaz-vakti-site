@@ -1,3 +1,6 @@
+# 1.4.1
+- Çevrimdışı çalışmasını sağlamak için birkaç deneme daha.
+
 # 1.4.0
 - Çevrimdışı çalışmasını sağlamak için birkaç deneme.
 
