@@ -38,7 +38,7 @@ const html = new htmlHelper();
 
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./scripts/serviceworker.js')
+        navigator.serviceWorker.register('./serviceworker.js')
             .then(reg => console.log("Service Worker regiestered!", reg))
             .catch(err => console.log("SW register failed", err));
     }
@@ -250,6 +250,14 @@ function saveSettings() {
 }
 
 
+function documentClick(event) {
+    if (!(html.aboutContent.contains(event.target) || html.settings.contains(event.target) || event.target == html.settingsBtn || event.target == html.aboutBtn)) {
+        html.aboutContent.style.display = "none";
+        html.settings.style.display = "none";
+    }
+}
+
+
 //*============= Functions & Classes =============*//
 
 
@@ -280,6 +288,8 @@ async function main() {
 document.addEventListener("DOMContentLoaded", main);
 
 html.reloadBtn.addEventListener("click", () => window.location.reload(false));
+
+document.addEventListener("click", documentClick);
 
 /* html.city.addEventListener("change", ()=>{
     editContent();

@@ -7,17 +7,17 @@ const CACHE_NAME = "namaz-vakti-site-pwa-cache-v2";
         : "/namaz-vakti-site"; */
 const ASSETS = [
     // "../",
-    "/namaz-vakti-site/src/",
-    "/namaz-vakti-site/src/index.html",
-    "/namaz-vakti-site/src/about.html",
-    "/namaz-vakti-site/src/styles/animations.css",
-    "/namaz-vakti-site/src/styles/catppuccin.css",
-    "/namaz-vakti-site/src/styles/dark.css",
-    "/namaz-vakti-site/src/styles/light.css",
-    "/namaz-vakti-site/src/styles/palette.css",
-    "/namaz-vakti-site/src/styles/phone.css",
-    "/namaz-vakti-site/src/styles/style.css",
-    "/namaz-vakti-site/src/scripts/index.js"/* ,
+    //"./",
+    "./index.html",
+    "./about.html",
+    "./styles/animations.css",
+    "./styles/catppuccin.css",
+    "./styles/dark.css",
+    "./styles/light.css",
+    "./styles/palette.css",
+    "./styles/phone.css",
+    "./styles/style.css",
+    "./scripts/index.js"/* ,
     "../",
     "../index.html",
     "../about.html",
@@ -70,7 +70,7 @@ self.addEventListener("fetch", (event) => {
                     })
                     .catch(() => {
                         if (req.mode === "navigate")
-                            return caches.match("/index.html");
+                            return caches.match("/namaz-vakti-site/src/index.html");
                     })
         )
     );

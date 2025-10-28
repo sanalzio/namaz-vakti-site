@@ -1,3 +1,6 @@
+# 1.4.3
+- Çevrimdışı çalışmasını becerdim. (sanırım)
+
 # 1.4.2
 - Performans düzenlemeleri.
 
