@@ -119,6 +119,10 @@ async function applySettings() {
     if (localStorage.theme) {
         html.themeSelect.value = localStorage.theme;
         html.themeLink.href = `./styles/${html.themeSelect.value}.css`;
+        if (localStorage.theme == "light") html.themeColor.content = "#eff1f5";
+        else html.themeColor.content = "#1e1e2e";
+        html.darkStyle.remove();
+        html.lightStyle.remove();
     }
 
     if (localStorage.zoom) {
@@ -199,8 +203,8 @@ async function editContent() {
     if (!vakitler) return false;
 
     const [imsak, gunes, ogle, ikindi, aksam, yatsi] = vakitler;
-    const sonrakiVakitI = sonrakiVaktiBul(vakitler);
-    const sonrakiVakit = vakitlerArray[sonrakiVakitI];
+    let sonrakiVakitI = sonrakiVaktiBul(vakitler);
+    let sonrakiVakit = vakitlerArray[sonrakiVakitI];
 
     html.imsak.innerHTML = imsak;
     html.gunes.innerHTML = gunes;
@@ -215,15 +219,32 @@ async function editContent() {
 
     html.sonrakiVakit.innerHTML = sonrakiVakit;
 
-    const [kalanSaat, kalanDk, kalanSn] = kalanZaman(vakitler[sonrakiVakitI]);
+    const [kalanSaat, kalanDk, kalanSn] = kalanZaman(vakitler[sonrakiVaktiBul(vakitler)]);
     html.sonrakineKalan.innerHTML = `${"0".repeat(2-kalanSaat.toString().length)}${kalanSaat}:${"0".repeat(2-kalanDk.toString().length)+kalanDk}:${"0".repeat(2-kalanSn.toString().length)+kalanSn}`;
     html.time.innerHTML = sistemSaati();
 
-    clockInterval = setInterval(()=>{
-        const [kalanSaat, kalanDk, kalanSn] = kalanZaman(vakitler[sonrakiVakitI]);
+    function clockInterval() {
+        const now = new Date();
+        let sonrakiVakitI = sonrakiVaktiBul(vakitler);
+        let sonrakiVakit = vakitlerArray[sonrakiVakitI];
+        html.sonrakiVakit.innerHTML = sonrakiVakit;
+        const [kalanSaat, kalanDk, kalanSn] = kalanZaman(vakitler[sonrakiVaktiBul(vakitler)]);
         html.sonrakineKalan.innerHTML = `${"0".repeat(2-kalanSaat.toString().length)}${kalanSaat}:${"0".repeat(2-kalanDk.toString().length)+kalanDk}:${"0".repeat(2-kalanSn.toString().length)+kalanSn}`;
         html.time.innerHTML = sistemSaati();
-    },1000);
+
+        const delay = 1000 - (now.getMilliseconds());
+        setTimeout(clockInterval, delay);
+    }
+
+    clockInterval();
+    /*clockInterval = setInterval(()=>{
+        let sonrakiVakitI = sonrakiVaktiBul(vakitler);
+        let sonrakiVakit = vakitlerArray[sonrakiVakitI];
+        html.sonrakiVakit.innerHTML = sonrakiVakit;
+        const [kalanSaat, kalanDk, kalanSn] = kalanZaman(vakitler[sonrakiVaktiBul(vakitler)]);
+        html.sonrakineKalan.innerHTML = `${"0".repeat(2-kalanSaat.toString().length)}${kalanSaat}:${"0".repeat(2-kalanDk.toString().length)+kalanDk}:${"0".repeat(2-kalanSn.toString().length)+kalanSn}`;
+        html.time.innerHTML = sistemSaati();
+    }, 1000);*/
 
     editDate();
 
@@ -251,9 +272,9 @@ function saveSettings() {
 
 
 function documentClick(event) {
-    if (!(html.aboutContent.contains(event.target) || html.settings.contains(event.target) || event.target == html.settingsBtn || event.target == html.aboutBtn)) {
-        html.aboutContent.style.display = "none";
-        html.settings.style.display = "none";
+    if (!(html.aboutContent.contains(event.target) || html.settings.contains(event.target) || event.target == html.settingsBtn || event.target == html.aboutBtn || html.settingsBtn.contains(event.target) || html.aboutBtn.contains(event.target))) {
+        html.aboutContent.classList.remove("visible");
+        html.settings.classList.remove("visible");
     }
 }
 
@@ -307,13 +328,13 @@ html.zoom.addEventListener("input", ()=>{
     html.zoomVal.innerHTML = html.zoom.value;
 });
 
-/* html.lowAnims.addEventListener("change", ()=>{
+/*html.lowAnims.addEventListener("change", ()=>{
     if (html.lowAnims.checked) {
         html.anims.href = "";
     } else {
         html.anims.href = "./styles/animations.css";
     }
-}); */
+});*/
 
 
 /* Settings apply */
@@ -330,11 +351,11 @@ html.applyBtn.addEventListener("click", ()=>{
 /* Settings and About Div */
 
 html.settingsBtn.addEventListener("click", ()=>{
-    html.settings.style.display = html.settings.style.display == "block" ? "none" : "block";
+    html.settings.classList.toggle("visible");
 });
 
 html.aboutBtn.addEventListener("click", ()=>{
-    html.aboutContent.style.display = html.aboutContent.style.display == "block" ? "none" : "block";
+    html.aboutContent.classList.toggle("visible");
 });
 
 /* Settings and About Containers */

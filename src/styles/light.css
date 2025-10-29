@@ -1,4 +1,5 @@
 :root {
+    --themeColor: var(--light-base);
     accent-color: var(--light-accent);
     color-scheme: light;
 }

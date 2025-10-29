@@ -22,11 +22,16 @@ html, body {
     top: 3.5rem;
     z-index: 2;
     display: none;
+    transition: clip-path 0.2s;
+}
+#aboutContent.visible,
+#settings.visible {
+    display: block;
 }
 
 #settingsBtn, #aboutBtn {
-    /* display: inline; */
-    display: none;
+    display: inline;
+    /* display: none; */
 }
 
 #settings {

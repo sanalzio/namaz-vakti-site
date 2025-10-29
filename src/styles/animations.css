@@ -1,3 +1,23 @@
-#topbar svg:hover{
+/*#topbar svg:hover{
     transform: rotate(-360deg);
+}*/
+
+#settings,
+#aboutContent {
+    display:block
+}
+#aboutContent {
+    clip-path:circle(0% at 100% 0%);
+}
+#settings {
+    clip-path:circle(0% at 0% 0%);
+}
+#aboutContent.visible {
+    clip-path:circle(150% at 100% 0%);
+}
+#settings.visible {
+    clip-path:circle(150% at 0% 0%);
+}
+body:has(#aboutContent:not(.visible)){
+    overflow:hidden;
 }

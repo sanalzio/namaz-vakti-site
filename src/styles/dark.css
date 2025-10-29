@@ -1,4 +1,5 @@
 :root {
+    --themeColor: var(--dark-base);
     accent-color: var(--dark-accent);
     color-scheme: dark;
 }
