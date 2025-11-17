@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Namaz Vakti</title>
+
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/phone.css" media="screen and (max-width: 450px)">
+
+    <link rel="stylesheet" id="darkStyle" href="./styles/dark.css">
+
+    <link rel="stylesheet" id="lightStyle" href="./styles/light.css" media="(prefers-color-scheme: light)">
+
+    <link rel="stylesheet" href="./styles/catppuccin.css">
+    <link rel="stylesheet" href="./styles/palette.css">
+
+    <link id="anims" rel="stylesheet" href="./styles/animations.css">
+
+    <link id="themeLink" rel="stylesheet" href="">
+
+    <link rel="shortcut icon" href="./assets/icons/png/255x255.png" type="image/x-icon" media="(prefers-color-scheme: dark)">
+    <link rel="shortcut icon" href="./assets/icons/png/255x255-light.png" type="image/x-icon" media="(prefers-color-scheme: light)">
+
+    <meta property="og:title" content="Namaz Vakti">
+    <meta property="og:site_name" content="Namaz Vakti">
+    <meta property="og:description" content="Şık görünümlü namaz vakti sitesi.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/sanalzio/namaz-vakti/assets/thumbnail.jpeg">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:type" content="object">
+    <!-- meta[property="og:" content=""] -->
+
+    <meta name="author" content="Sanalzio">
+    <meta name="description" content="Şık görünümlü namaz vakti sitesi.">
+    <meta name="keywords" content="namaz, ezan, vakit, namaz vakti, ezan vakti, diyanet, vakti, islam, islamiyet, ibadet">
+
+
+    <!--*--*-- PWA Settings --*--*-->
+
+    <!--* Dark theme *-->
+
+        <!-- iPhone ICON -->
+        <link href="./assets/icons/png/57x57.png" sizes="57x57" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+        <!-- iPad ICON-->
+        <link href="./assets/icons/png/72x72.png" sizes="72x72" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+        <!-- iPhone (Retina) ICON-->
+        <link href="./assets/icons/png/114x114.png" sizes="114x114" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+        <!-- iPad (Retina) ICON-->
+        <link href="./assets/icons/png/144x144.png" sizes="144x144" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+
+        <!-- iPhone SPLASHSCREEN-->
+        <link href="./assets/splash/png/320x460.png" media="(prefers-color-scheme: dark) and (device-width: 320px)" rel="apple-touch-startup-image">
+        <!-- iPhone (Retina) SPLASHSCREEN-->
+        <link href="./assets/splash/png/640x920.png" media="(prefers-color-scheme: dark) and (device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <!-- iPad (portrait) SPLASHSCREEN-->
+        <link href="./assets/splash/png/768x1004.png" media="(prefers-color-scheme: dark) and (device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+        <!-- iPad (landscape) SPLASHSCREEN-->
+        <link href="./assets/splash/png/748x1024.png" media="(prefers-color-scheme: dark) and (device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+        <!-- iPad (Retina, portrait) SPLASHSCREEN-->
+        <link href="./assets/splash/png/1536x2008.png" media="(prefers-color-scheme: dark) and (device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <!-- iPad (Retina, landscape) SPLASHSCREEN-->
+        <link href="./assets/splash/png/2048x1496.png" media="(prefers-color-scheme: dark) and (device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <!-- iPhone 6/7/8 -->
+        <link href="./assets/splash/png/750x1334.png" media="(prefers-color-scheme: dark) and (device-width: 375px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <!-- iPhone 6 Plus/7 Plus/8 Plus -->
+        <link href="./assets/splash/png/1242x2208.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+
+
+    <!--* Light theme *-->
+
+        <!-- iPhone ICON -->
+        <link href="./assets/icons/png/57x57-light.png" sizes="57x57" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+        <!-- iPad ICON-->
+        <link href="./assets/icons/png/72x72-light.png" sizes="72x72" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+        <!-- iPhone (Retina) ICON-->
+        <link href="./assets/icons/png/114x114-light.png" sizes="114x114" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+        <!-- iPad (Retina) ICON-->
+        <link href="./assets/icons/png/144x144-light.png" sizes="144x144" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+    
+        <!-- iPhone SPLASHSCREEN-->
+        <link href="./assets/splash/png/320x460-light.png" media="(prefers-color-scheme: light) and (device-width: 320px)" rel="apple-touch-startup-image">
+        <!-- iPhone (Retina) SPLASHSCREEN-->
+        <link href="./assets/splash/png/640x920-light.png" media="(prefers-color-scheme: light) and (device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <!-- iPad (portrait) SPLASHSCREEN-->
+        <link href="./assets/splash/png/768x1004-light.png" media="(prefers-color-scheme: light) and (device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+        <!-- iPad (landscape) SPLASHSCREEN-->
+        <link href="./assets/splash/png/748x1024-light.png" media="(prefers-color-scheme: light) and (device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+        <!-- iPad (Retina, portrait) SPLASHSCREEN-->
+        <link href="./assets/splash/png/1536x2008-light.png" media="(prefers-color-scheme: light) and (device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <!-- iPad (Retina, landscape) SPLASHSCREEN-->
+        <link href="./assets/splash/png/2048x1496-light.png" media="(prefers-color-scheme: light) and (device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <!-- iPhone 6/7/8 -->
+        <link href="./assets/splash/png/750x1334-light.png" media="(prefers-color-scheme: light) and (device-width: 375px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <!-- iPhone 6 Plus/7 Plus/8 Plus -->
+        <link href="./assets/splash/png/1242x2208-light.png" media="(prefers-color-scheme: light) and (device-width: 414px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+
+    <!--*--*-- PWA Settings --*--*-->
+
+
+    <!--*--*-- Dynamic Manifest --*--*-->
+
+    <script>
+
+        const params = new URL(location.href).searchParams;
+        let theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "" : "-light";
+        let color = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#1e1e2e" : "#eff1f5";
+        if (params.get("theme") == "dark") {
+            theme = "";
+            color = "#1e1e2e";
+        } else if (params.get("theme") == "light") {
+            theme = "-light";
+            color = "#eff1f5";
+        }
+        const tDir = location.href.split("/").slice(0, -1).join("/");
+        const manifest = {
+            "name": "Namaz Vakti",
+            "short_name": "namaz",
+            "description": "Diyanet namaz vakitleri için şık ve modern görünümlü alternatif frontend uygulaması.",
+            "icons": [
+                {
+                    "src": `${tDir}/assets/icons/png/36x36${theme}.png`,
+                    "sizes": "36x36",
+                    "type": "image/png"
+                },
+                {
+                    "src": `${tDir}/assets/icons/png/48x48${theme}.png`,
+                    "sizes": "48x48",
+                    "type": "image/png"
+                },
+                {
+                    "src": `${tDir}/assets/icons/png/72x72${theme}.png`,
+                    "sizes": "72x72",
+                    "type": "image/png"
+                },
+                {
+                    "src": `${tDir}/assets/icons/png/96x96${theme}.png`,
+                    "sizes": "96x96",
+                    "type": "image/png"
+                },
+                {
+                    "src": `${tDir}/assets/icons/png/144x144${theme}.png`,
+                    "sizes": "144x144",
+                    "type": "image/png"
+                },
+                {
+                    "src": `${tDir}/assets/icons/png/192x192${theme}.png`,
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ],
+            "splash_screens": [
+            {
+                "src": `${tDir}/assets/splash/png/640x1136${theme}.png`,
+                "sizes": "640x1136",
+                "type": "image/png"
+            },
+            {
+                "src": `${tDir}/assets/splash/png/750x1334${theme}.png`,
+                "sizes": "750x1334",
+                "type": "image/png"
+            }
+            ],
+            "theme_color": color,
+            "background_color": color,
+            "start_url": location.href,
+            "display": "standalone",
+            "orientation": "portrait"
+        };
+
+        let content = encodeURIComponent(JSON.stringify(manifest));
+        let url = "data:application/manifest+json,"+content;
+        let element = document.createElement('link');
+        element.setAttribute('rel', 'manifest');
+        element.setAttribute('href', url);
+        document.querySelector('head').appendChild(element);
+
+    </script>
+
+    <!--*--*-- Dynamic Manifest --*--*-->
+    
+    <meta name="theme-color" id="themeColor" content="#1e1e2e">
+
+</head>
+
+<body>
+
+    <div id="topbar">
+
+        <svg id="settingsBtn" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="m 7.5 1.019531 c -0.550781 0 -0.996094 0.445313 -0.996094 0.996094 v 0.453125 c -0.472656 0.128906 -0.929687 0.320312 -1.355468 0.566406 l -0.324219 -0.324218 c -0.390625 -0.390626 -1.019531 -0.390626 -1.410157 0 l -0.703124 0.707031 c -0.390626 0.390625 -0.390626 1.019531 0 1.410156 l 0.320312 0.320313 c -0.246094 0.425781 -0.433594 0.882812 -0.5625 1.355468 h -0.453125 c -0.550781 0 -0.996094 0.445313 -0.996094 0.996094 v 1 c 0 0.550781 0.445313 0.996094 0.996094 0.996094 h 0.449219 c 0.132812 0.472656 0.320312 0.929687 0.566406 1.355468 l -0.320312 0.320313 c -0.390626 0.390625 -0.390626 1.019531 0 1.410156 l 0.703124 0.707031 c 0.390626 0.390626 1.019532 0.390626 1.410157 0 l 0.320312 -0.320312 c 0.429688 0.242188 0.882813 0.433594 1.359375 0.558594 v 0.457031 c 0 0.550781 0.445313 0.996094 0.996094 0.996094 h 0.996094 c 0.554687 0 1 -0.445313 1 -0.996094 v -0.453125 c 0.472656 -0.128906 0.929687 -0.320312 1.355468 -0.566406 l 0.320313 0.324218 c 0.390625 0.390626 1.019531 0.390626 1.410156 0 l 0.707031 -0.707031 c 0.390626 -0.390625 0.390626 -1.019531 0 -1.410156 l -0.320312 -0.320313 c 0.242188 -0.425781 0.433594 -0.882812 0.558594 -1.355468 h 0.453125 c 0.554687 0 1 -0.445313 1 -0.996094 v -1 c 0 -0.550781 -0.445313 -0.996094 -1 -0.996094 h -0.449219 c -0.128906 -0.472656 -0.320312 -0.929687 -0.566406 -1.355468 l 0.324218 -0.320313 c 0.390626 -0.390625 0.390626 -1.019531 0 -1.410156 l -0.707031 -0.707031 c -0.390625 -0.390626 -1.019531 -0.390626 -1.410156 0 l -0.320313 0.320312 c -0.425781 -0.242188 -0.882812 -0.429688 -1.355468 -0.558594 v -0.457031 c 0 -0.550781 -0.445313 -0.996094 -1 -0.996094 z m 0.515625 3.976563 c 1.660156 0 3 1.34375 3 3 s -1.339844 3 -3 3 c -1.65625 0 -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 z m 0 0"/>
+        </svg>
+
+        <svg id="aboutBtn" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path d="m 8.152344 3.007812 c 0.726562 0.035157 1.433594 0.335938 1.96875 0.871094 c 0.855468 0.855469 1.113281 2.152344 0.652344 3.269532 c -0.332032 0.796874 -0.988282 1.390624 -1.773438 1.671874 v 1.179688 h -2 v -2 c 0 -0.550781 0.449219 -1 1 -1 c 0.40625 0 0.769531 -0.242188 0.925781 -0.617188 c 0.152344 -0.375 0.070313 -0.800781 -0.21875 -1.089843 c -0.289062 -0.289063 -0.714843 -0.371094 -1.089843 -0.214844 c -0.375 0.152344 -0.617188 0.515625 -0.617188 0.921875 h -2 c 0 -1.210938 0.734375 -2.308594 1.851562 -2.769531 c 0.417969 -0.175781 0.863282 -0.246094 1.300782 -0.222657 z m -0.152344 7.992188 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 s -1 -0.449219 -1 -1 s 0.449219 -1 1 -1 z m 0 0"/>
+                <path d="m 13.648438 2.375 c -3.113282 -3.117188 -8.179688 -3.117188 -11.296876 0 c -3.113281 3.113281 -3.113281 8.179688 0 11.292969 c 3.117188 3.113281 8.183594 3.113281 11.296876 0 c 3.113281 -3.113281 3.113281 -8.179688 0 -11.292969 z m -1.609376 1.609375 c 2.25 2.25 2.25 5.824219 0 8.074219 c -2.25 2.253906 -5.828124 2.253906 -8.078124 0 c -2.25 -2.25 -2.25 -5.824219 0 -8.078125 c 2.25 -2.25 5.828124 -2.25 8.078124 0 z m 0 0"/>
+            </g>
+        </svg>
+
+    </div>
+
+
+    <div id="settings">
+
+        <h3 id="setHead">Settings</h3>
+
+
+        <div id="themeDiv">
+
+            <label for="themeSelect">Tema</label>
+            <select name="themeSelect" id="themeSelect">
+
+                <option value="dark">Koyu</option>
+                <option value="light">Açık</option>
+
+            </select>
+        </div>
+
+
+        <select id="city" name="Sehir">
+            <option value="1">Adana</option>
+            <option value="2">Adıyaman</option>
+            <option value="3">Afyonkarahisar</option>
+            <option value="4">Ağrı</option>
+            <option value="5">Amasya</option>
+            <option value="6">Ankara</option>
+            <option value="7">Antalya</option>
+            <option value="8">Artvin</option>
+            <option value="9">Aydın</option>
+            <option value="10">Balıkesir</option>
+            <option value="11">Bilecik</option>
+            <option value="12">Bingöl</option>
+            <option value="13">Bitlis</option>
+            <option value="14">Bolu</option>
+            <option value="15">Burdur</option>
+            <option value="16">Bursa</option>
+            <option value="17">Çanakkale</option>
+            <option value="18">Çankırı</option>
+            <option value="19">Çorum</option>
+            <option value="20">Denizli</option>
+            <option value="21">Diyarbakır</option>
+            <option value="22">Edirne</option>
+            <option value="23">Elazığ</option>
+            <option value="24">Erzincan</option>
+            <option value="25">Erzurum</option>
+            <option value="26">Eskişehir</option>
+            <option value="27">Gaziantep</option>
+            <option value="28">Giresun</option>
+            <option value="29">Gümüşhane</option>
+            <option value="30">Hakkâri</option>
+            <option value="31">Hatay</option>
+            <option value="32">Isparta</option>
+            <option value="33">Mersin</option>
+            <option value="34">İstanbul</option>
+            <option value="35">İzmir</option>
+            <option value="36">Kars</option>
+            <option value="37">Kastamonu</option>
+            <option value="38">Kayseri</option>
+            <option value="39">Kırklareli</option>
+            <option value="40">Kırşehir</option>
+            <option value="41">Kocaeli</option>
+            <option value="42">Konya</option>
+            <option value="43">Kütahya</option>
+            <option value="44">Malatya</option>
+            <option value="45">Manisa</option>
+            <option value="46">Kahramanmaraş</option>
+            <option value="47">Mardin</option>
+            <option value="48">Muğla</option>
+            <option value="49">Muş</option>
+            <option value="50">Nevşehir</option>
+            <option value="51">Niğde</option>
+            <option value="52">Ordu</option>
+            <option value="53">Rize</option>
+            <option value="54">Sakarya</option>
+            <option value="55">Samsun</option>
+            <option value="56">Siirt</option>
+            <option value="57">Sinop</option>
+            <option value="58">Sivas</option>
+            <option value="59">Tekirdağ</option>
+            <option value="60">Tokat</option>
+            <option value="61">Trabzon</option>
+            <option value="62">Tunceli</option>
+            <option value="63">Şanlıurfa</option>
+            <option value="64">Uşak</option>
+            <option value="65">Van</option>
+            <option value="66">Yozgat</option>
+            <option value="67">Zonguldak</option>
+            <option value="68">Aksaray</option>
+            <option value="69">Bayburt</option>
+            <option value="70">Karaman</option>
+            <option value="71">Kırıkkale</option>
+            <option value="72">Batman</option>
+            <option value="73">Şırnak</option>
+            <option value="74">Bartın</option>
+            <option value="75">Ardahan</option>
+            <option value="76">Iğdır</option>
+            <option value="77">Yalova</option>
+            <option value="78">Karabük</option>
+            <option value="79">Kilis</option>
+            <option value="80">Osmaniye</option>
+            <option value="81">Düzce</option>
+        </select>
+
+
+        <div id="lowAnimsDiv">
+
+            <label for="lowAnims">Hareketi azalt</label>
+            <input type="checkbox" name="lowAnims" id="lowAnims">
+
+        </div>
+
+
+        <div id="zoomDiv">
+
+            <label for="zoom">Büyüteç</label>
+            <input type="range" name="zoom" id="zoom" min="0.5" max="2" step="0.1" value="1">
+            <label id="zoomVal" for="zoom">1</label>
+
+        </div>
+
+        <button id="applyBtn">Uygula</button>
+
+    </div>
+
+    <div id="aboutContent">
+
+        <p id="about">Bu uygulama hakkında...</p>
+
+    </div>
+
+
+    <div id="errorMessageContainer"><p id="errorMessage">Bir hata ile karşılaşıldı. (Hata kodu: <span id="errCode">500</span>) Yeniden denemek için <span id="reloadBtn">yeniden yükleyin</span>.</p></div>
+
+    <div id="body">
+
+        <div id="bodyDiv">
+
+
+            <h2 id="cityHeader"><span id="cityName">Adana</span> için namaz vakti</h3>
+
+            <h2 class="subtext" id="date">1 Ocak Pazartesi</h2>
+
+            <div id="line"></div>
+
+            <div id="main">
+
+                <div id="sonrakiDiv">
+
+                    <h3 id="sonrakiHead"><span id="sonrakiVakit">Akşam</span> vaktine<br>kalan</h3>
+                    <h2 class="subtext" id="sonrakineKalan">00:00:00</h2>
+
+                </div>
+
+                <div id="timeDiv">
+
+                    <h3 id="timeHead">Sistem Saati<br><br></h3>
+                    <h2 class="subtext" id="time">00:00:00</h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="vakitler">
+
+
+                <div id="imsakDiv">
+                    <h2>İmsak</h2>
+                    <h2 class="subtext" id="imsak">00:00</h2>
+                </div>
+
+                <div id="gunesDiv">
+                    <h2>Güneş</h2>
+                    <h2 class="subtext" id="gunes">00:00</h2>
+                </div>
+
+                <div id="ogleDiv">
+                    <h2>Öğle</h2>
+                    <h2 class="subtext" id="ogle">00:00</h2>
+                </div>
+
+                <div id="ikindiDiv">
+                    <h2>İkindi</h2>
+                    <h2 class="subtext" id="ikindi">00:00</h2>
+                </div>
+
+                <div id="aksamDiv">
+                    <h2>Akşam</h2>
+                    <h2 class="subtext" id="aksam">00:00</h2>
+                </div>
+
+                <div id="yatsiDiv">
+                    <h2>Yatsı</h2>
+                    <h2 class="subtext" id="yatsi">00:00</h2>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./scripts/index.js"></script>
+
+</body>
+
+</html>
